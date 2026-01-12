@@ -1,4 +1,5 @@
-🐕 Wavego Robot Dog – Remote Hand-Gesture Control via MQTT
+# 🐕 Wavego Robot Dog – Remote Hand-Gesture Control via MQTT
+
 📌 Project Overview
 
 This project enables remote real-time control of a Wavego Robot Dog using hand gestures detected by a Raspberry Pi camera.
@@ -88,22 +89,21 @@ wavego-gesture-control/
 │   └── Instruction.txt
 │
 ├── esp32/
-│   ├── WAVEGO.ino          ← modified
-│   ├── app_httpd.cpp       ← modified
+│   ├── WAVEGO.ino          
+│   ├── app_httpd.cpp       
 │   ├── InitConfig.h
 │   ├── PreferencesConfig.h
 │   ├── ServoCtrl.h
 │   └── WebPage.h
 │
-├── README.md
-└── LICENSE
+└── README.md
 
 📶 WiFi Setup on the Wavego Robot
 🔧 Where WiFi Credentials Are Defined
 
 WiFi credentials are hardcoded in the ESP32 firmware inside:
 
-WAVEGO.ino
+app_httpd.cpp
 
 You must set:
 
@@ -111,7 +111,10 @@ Hotspot SSID
 
 Hotspot password
 
-These must match your Android phone hotspot.
+These must match your Android phone hotspot. For ESP32 anr Raspberry, actual are:
+// WIFI_STA settings.
+const char* STA_SSID = "RobotNet";
+const char* STA_PWD  = "control123";
 
 🔁 Automatic Connection (Important)
 
@@ -181,7 +184,7 @@ Port: Select the ESP32 serial port
 
 5️⃣ Set WiFi Credentials
 
-Inside WAVEGO.ino, edit:
+Inside app_httpd.cpp, edit:
 
 const char* ssid = "YOUR_HOTSPOT_NAME";
 const char* password = "YOUR_HOTSPOT_PASSWORD";
@@ -224,14 +227,14 @@ python hand_detection_V2.py
 python hand_detection_V3.py
 
 ✋ Gesture Control
-🔹 Version 2 – Simple Control
+🔹 Version 2 (hand_detection_V2) – Simple Control
 Gesture	Command
 ✋ Open Palm	FORWARD
 ✊ Fist	REVERSE
 ✌️ Peace	LEFT
 ☝️ Index	RIGHT
 4 Fingers	STOP
-🔹 Version 3 – Dual-Hand Control (Recommended)
+🔹 Version 3 (hand_detection_V3) – Dual-Hand Control (Recommended)
 Left Hand – Actions (Priority)
 Gesture	Command
 ✋ Open Palm	HANDSHAKE
