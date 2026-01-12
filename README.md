@@ -223,7 +223,7 @@ pip install opencv-python mediapipe paho-mqtt
 
 3️⃣ Run Gesture Detection
 python hand_detection_V2.py
-# or
+or
 python hand_detection_V3.py
 
 ✋ Gesture Control
